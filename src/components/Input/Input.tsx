@@ -6,13 +6,24 @@ import { CalcContext } from "../../modules/CalcContext";
 export const Input = () => {
   const { setValue } = useContext(CalcContext);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue?.(e.target.value);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = event.target.value;
+    const isToBeSeparated = inputValue.includes(" ") && inputValue.at(-1) !== " ";
+
+    event.target.value = inputValue.replace(/[^0-9\s,.]/g,'');
+
+    if (isToBeSeparated) {
+      const separatedValue = inputValue.replace(/\s/g, ",");
+      event.target.value = separatedValue;
+      setValue?.(separatedValue);
+    } else {
+      setValue?.(inputValue);
+    }
   }
 
   return (
       <>
-        <input className="Input" type="text" id="input" onChange={onChange}/>
+        <input className="Input" type="text" id="input" onChange={handleChange}/>
         <Label className="Input__label" htmlFor="input"/>
       </>
   )
