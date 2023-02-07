@@ -1,11 +1,14 @@
 import React from 'react';
 import './App.scss';
+import { Container, Dropdown, Header, Input, Output } from "../../components";
 
-function App() {
+export function App() {
   return (
-    <div className="App">
-    </div>
+        <Container>
+          <Header header={"REM Calculator"}></Header>
+          <Dropdown />
+          <Input />
+          <Output />
+        </Container>
   );
 }
-
-export default App;
