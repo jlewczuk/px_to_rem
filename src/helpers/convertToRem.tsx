@@ -1,5 +1,8 @@
-export const convertToRem = (pxValues: string) => {
-  const remValues = pxValues?.split(",").map(elem => parseFloat(elem) / 16).filter(Boolean);
+import {DropdownModel} from "../components";
+
+export const convertToRem = (pxValues: string, dropdownItem: DropdownModel) => {
+  const dropdownValue = dropdownItem?.value;
+  const remValues = pxValues?.split(",").map(elem => parseFloat(elem) / dropdownValue).filter(Boolean);
 
   return remValues;
 }

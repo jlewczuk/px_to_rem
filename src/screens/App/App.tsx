@@ -1,18 +1,19 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import './App.scss';
-import { Container, Dropdown, Header, Input, Output } from "../../components";
-import { CalcContext } from "../../modules/CalcContext";
+import {Container, Dropdown, DropdownModel, Header, Input, Output} from "../../components";
+import {CalcContext} from "../../modules/CalcContext";
 
 export function App() {
-  const [value, setValue] = useState<string | undefined>();
+  const [inputValue, setInputValue] = useState<string | undefined>();
+  const [dropdownItem, setDropdownItem] = useState<DropdownModel>();
 
   return (
-      <CalcContext.Provider value={{ value, setValue }}>
+      <CalcContext.Provider value={{inputValue, setInputValue, dropdownItem, setDropdownItem}}>
         <Container>
-          <Header header={"REM Calculator"}></Header>
-          <Dropdown />
-          <Input />
-          <Output />
+          <Header header={"REM Calculator"}/>
+          <Dropdown title={"Select root value"}/>
+          <Input/>
+          <Output/>
         </Container>
       </CalcContext.Provider>
   );

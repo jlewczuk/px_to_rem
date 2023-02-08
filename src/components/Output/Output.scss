@@ -4,12 +4,12 @@
 
   &__item {
     opacity: 1;
-    color: rgba(248,248,248,1);
-    font-family: "SFProDisplay-Bold";
+    color: rgba(248, 248, 248, 1);
     font-size: 29px;
     font-weight: 700;
     font-style: normal;
     letter-spacing: 3.63px;
-    padding: 0px 15px;
+    margin: 0px 15px;
+    cursor: pointer;
   }
 }

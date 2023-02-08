@@ -1,8 +1,11 @@
-import { createContext } from "react";
+import {createContext} from "react";
+import {DropdownModel} from "../components";
 
 interface CalcContextType {
-  value?: string;
-  setValue?: (value: string) => void;
+  inputValue?: string;
+  setInputValue?: (value: string) => void;
+  dropdownItem?: DropdownModel;
+  setDropdownItem?: (value: DropdownModel) => void;
 }
 
 export const CalcContext = createContext<CalcContextType>({});
