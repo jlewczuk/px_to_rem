@@ -6,6 +6,8 @@ interface CalcContextType {
   setInputValue?: (value: string) => void;
   dropdownItem?: DropdownModel;
   setDropdownItem?: (value: DropdownModel) => void;
+  isDropdownOpen?: boolean;
+  setIsDropdownOpen?: (value: boolean) => void;
 }
 
 export const CalcContext = createContext<CalcContextType>({});

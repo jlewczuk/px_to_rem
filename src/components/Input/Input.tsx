@@ -7,18 +7,10 @@ export const Input = () => {
   const {setInputValue} = useContext(CalcContext);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.target.value;
-    const isToBeSeparated = inputValue.includes(" ") && inputValue.at(-1) !== " ";
+    const inputValue = event.target.value.replace(/[^0-9\s,]/g, '');
 
-    event.target.value = inputValue.replace(/[^0-9\s,.]/g, '');
-
-    if (isToBeSeparated) {
-      const separatedValue = inputValue.replace(/\s/g, ",");
-      event.target.value = separatedValue;
-      setInputValue?.(separatedValue);
-    } else {
-      setInputValue?.(inputValue);
-    }
+    event.target.value = inputValue;
+    setInputValue?.(inputValue);
   }
 
   return (

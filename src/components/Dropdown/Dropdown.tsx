@@ -1,8 +1,9 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useRef} from "react";
 import "./Dropdown.scss";
 import {CalcContext} from "../../modules/CalcContext";
 import {getDropdownList} from "../../helpers/getDropdownList";
 import {ICONS} from "../../constants/constants";
+import {useHandleOutsideClick} from "../../hooks/useOutsideClick";
 
 interface DropdownProps {
   title?: string;
@@ -15,24 +16,24 @@ export interface DropdownModel {
 }
 
 export const Dropdown = ({title}: DropdownProps) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const {dropdownItem, setDropdownItem} = useContext(CalcContext)
+  const {isDropdownOpen, setIsDropdownOpen, dropdownItem, setDropdownItem} = useContext(CalcContext)
   const dropdownList = getDropdownList(2);
   const isValueSelected = dropdownItem?.value;
+  const dropdownRef = useRef(null);
 
   const toggleList = () => {
-    setIsOpen(!isOpen);
+    setIsDropdownOpen?.(!isDropdownOpen);
   }
 
   const selectItem = (item: DropdownModel) => {
-    if (setDropdownItem) {
-      setDropdownItem(item);
-      toggleList();
-    }
+    setDropdownItem?.(item);
+    toggleList();
   }
 
+  useHandleOutsideClick(dropdownRef);
+
   return (
-      <div className="Dropdown">
+      <div className="Dropdown" ref={dropdownRef}>
         <button
             type="button"
             className="Dropdown__header"
@@ -46,9 +47,10 @@ export const Dropdown = ({title}: DropdownProps) => {
                   </div>
               )
           }
-          <img className="Dropdown__header-icon" src={isOpen ? ICONS.ICON_UP : ICONS.ICON_DOWN} alt="dropdownIcon"/>
+          <img className="Dropdown__header-icon" src={isDropdownOpen ? ICONS.ICON_UP : ICONS.ICON_DOWN}
+               alt="dropdownIcon"/>
         </button>
-        {isOpen && (
+        {isDropdownOpen && (
             <div
                 role="list"
                 className="Dropdown__list"

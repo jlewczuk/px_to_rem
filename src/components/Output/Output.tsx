@@ -12,6 +12,8 @@ export const Output = () => {
     if (inputValue && dropdownItem) {
       const output = convertToRem(inputValue, dropdownItem);
       setOutput(output);
+    } else {
+      setOutput([]);
     }
   }, [inputValue, dropdownItem])
 
