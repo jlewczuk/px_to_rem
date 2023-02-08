@@ -17,9 +17,9 @@ export interface DropdownModel {
 
 export const Dropdown = ({title}: DropdownProps) => {
   const {isDropdownOpen, setIsDropdownOpen, dropdownItem, setDropdownItem} = useContext(CalcContext)
-  const dropdownList = getDropdownList(2);
+  const dropdownList = getDropdownList({valueIterator: 2, quantity: 16});
   const isValueSelected = dropdownItem?.value;
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleList = () => {
     setIsDropdownOpen?.(!isDropdownOpen);

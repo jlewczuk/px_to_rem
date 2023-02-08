@@ -6,7 +6,5 @@ interface LabelProps {
 }
 
 export const Label = ({className, htmlFor}: LabelProps) => {
-  return (
-      <label className={className} htmlFor={htmlFor}>px to rem</label>
-  )
+  return <label className={className} htmlFor={htmlFor}>px to rem</label>
 };

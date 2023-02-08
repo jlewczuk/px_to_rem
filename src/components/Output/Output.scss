@@ -1,13 +1,13 @@
 .Output {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 
   &__item {
-    opacity: 1;
-    color: rgba(248, 248, 248, 1);
     font-size: 29px;
     font-weight: 700;
     font-style: normal;
+    color: #F8F8F8;
     letter-spacing: 3.63px;
     margin: 0px 15px;
     cursor: pointer;

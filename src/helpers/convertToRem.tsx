@@ -1,8 +1,11 @@
 import {DropdownModel} from "../components";
 
-export const convertToRem = (pxValues: string, dropdownItem: DropdownModel) => {
-  const dropdownValue = dropdownItem?.value;
-  const remValues = pxValues?.replace(/\s/g, "").split(",").map(elem => parseFloat(elem) / dropdownValue).filter(Boolean);
+interface ConvertToRemProps {
+  pxValues: string,
+  dropdownItem: DropdownModel
+}
 
-  return remValues;
+export const convertToRem = ({pxValues, dropdownItem}: ConvertToRemProps) => {
+  const dropdownValue = dropdownItem?.value;
+  return pxValues?.replace(/\s/g, "").split(",").map(elem => parseFloat(elem) / dropdownValue).filter(Boolean);
 }

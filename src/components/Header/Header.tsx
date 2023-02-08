@@ -6,7 +6,5 @@ interface HeaderProps {
 }
 
 export const Header = ({header}: HeaderProps) => {
-  return (
-      <div className="Header" >{header}</div>
-  )
+  return <div className="Header">{header}</div>
 };

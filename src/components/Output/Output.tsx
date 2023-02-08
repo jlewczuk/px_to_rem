@@ -10,24 +10,22 @@ export const Output = () => {
 
   useEffect(() => {
     if (inputValue && dropdownItem) {
-      const output = convertToRem(inputValue, dropdownItem);
+      const output = convertToRem({pxValues: inputValue, dropdownItem: dropdownItem});
       setOutput(output);
     } else {
       setOutput([]);
     }
   }, [inputValue, dropdownItem])
 
-  const renderOutput = (output: number[] | undefined) => {
-    const outputNode: React.ReactNode[] = [];
-
-    output?.map((item, key) => {
-      return outputNode.push(<div className="Output__item" key={key} onClick={copyToClipboard}>{item}</div>)
-    })
-
-    return outputNode;
+  const renderOutput = () => {
+    return (
+        <div className="Output">
+          {output?.map((item, key) =>
+              <div className="Output__item" key={key} onClick={copyToClipboard}>{item}</div>
+          )}
+        </div>
+    )
   }
 
-  return (
-      <div className="Output">{renderOutput(output)}</div>
-  )
+  return renderOutput()
 };

@@ -1,12 +1,12 @@
-import {useContext, useEffect} from "react";
+import {RefObject, useContext, useEffect} from "react";
 import {CalcContext} from "../modules/CalcContext";
 
-export const useHandleOutsideClick = (ref: any) => {
+export const useHandleOutsideClick = (ref: RefObject<HTMLDivElement>) => {
   const {setIsDropdownOpen} = useContext(CalcContext)
-  
+
   useEffect(() => {
-    function handleOutsideClick(event: any) {
-      if (ref.current && !ref.current.contains(event.target)) {
+    function handleOutsideClick(event: MouseEvent) {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
         setIsDropdownOpen?.(false);
       }
     }
