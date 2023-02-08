@@ -17,7 +17,7 @@ export interface DropdownModel {
 
 export const Dropdown = ({title}: DropdownProps) => {
   const {isDropdownOpen, setIsDropdownOpen, dropdownItem, setDropdownItem} = useContext(CalcContext)
-  const dropdownList = getDropdownList({valueIterator: 2, quantity: 16});
+  const dropdownList = getDropdownList({startValue: 8, iteratorValue: 2, maxValue: 64});
   const isValueSelected = dropdownItem?.value;
   const dropdownRef = useRef<HTMLDivElement>(null);
 
